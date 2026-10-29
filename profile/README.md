@@ -1,6 +1,11 @@
 # Flying Computer II
 
-We build an open, modular radio and video stack for a small UAV rover: embedded firmware on the vehicle, a matching ground station, and tools for video, control, and clock synchronization.
+Building blocks for **UAS (Unmanned Autonomous Systems)**: radio communication, video systems, and autonomous control systems.
+
+## Main components
+
+- **ROV — remotely operated vehicle:** rover, fixed-wing aircraft, helicopter, or multicopter.
+- **GND — ground station:** the radio, video, and control equipment used to operate and monitor the vehicle.
 
 ## System at a glance
 
