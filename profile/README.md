@@ -7,6 +7,14 @@ Building blocks for **UAS (Unmanned Autonomous Systems)**: radio communication, 
 - **ROV — remotely operated vehicle:** rover, fixed-wing aircraft, helicopter, or multicopter.
 - **GND — ground station:** the radio, video, and control equipment used to operate and monitor the vehicle.
 
+## Supported platforms
+
+![GNU/Linux](https://img.shields.io/badge/GNU%2FLinux-supported-333333?style=flat&logo=linux&logoColor=white)
+![Windows NT](https://img.shields.io/badge/Windows%20NT-supported-0078D6?style=flat&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEgNC4yIDEwLjYgMi45djguNUgxem0xMC44LTEuNUwyMyAxdjEwLjRIMTEuOHpNMSAxMi42aDkuNnY4LjVMMSAxOS44em0xMC44IDBIMjNWMjNsLTExLjItMS42eiIvPjwvc3ZnPg%3D%3D)
+![FreeRTOS / ESP-IDF](https://img.shields.io/badge/FreeRTOS%20%2F%20ESP--IDF-supported-E7352C?style=flat&logo=espressif&logoColor=white)
+![Android](https://img.shields.io/badge/Android-supported-3DDC84?style=flat&logo=android&logoColor=white)
+![Arduino](https://img.shields.io/badge/Arduino-supported-00979D?style=flat&logo=arduino&logoColor=white)
+
 ## System at a glance
 
 ```mermaid
