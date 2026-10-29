@@ -11,10 +11,10 @@ flowchart LR
     TX --> RL3[winject-l3]
     RC[RC + telemetry] <--> RL3
     CLK[krono client] <--> RL3
-    RL3 --> RP[ESP32-C6 radio]
+    RL3 --> RP[ESP32-C6\nwinject-radio]
   end
 
-  RP <-->|wireless link| GP[ESP32-C6 radio]
+  RP <-->|wireless link| GP[ESP32-C6\nwinject-radio]
 
   subgraph G[GROUND]
     GP --> GL3[winject-l3]
@@ -27,7 +27,7 @@ flowchart LR
   end
 ```
 
-The rover and ground P4 boards run matching winject-l3 radio configurations. The C6 handles the radio interface over SDIO. On the rover, the P4 captures OV5647 video and the vstreamer pipeline performs H.264 encoding, RTP packetization, and application-level FEC. On the ground P4, the receiver recovers the stream and sends it to Android over USB and to the local network over RTP multicast.
+The rover and ground P4 boards run matching winject-l3 radio configurations. The ESP32-C6 runs winject-radio and connects to the P4 over SDIO. On the rover, the P4 captures OV5647 video and the vstreamer pipeline performs H.264 encoding, RTP packetization, and application-level FEC. On the ground P4, the receiver recovers the stream and sends it to Android over USB and to the local network over RTP multicast.
 
 ## Repositories
 
