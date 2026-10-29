@@ -4,19 +4,9 @@ We build an open, modular radio and video stack for a small UAV rover: embedded 
 
 ## System at a glance
 
-```text
-ROVER
-Camera → ESP32-P4 video pipeline → winject-l3 → ESP32-C6 radio
-             ↑                         ↑
-        krono clock             RC + telemetry
-                                        │
-                                  wireless link
-                                        │
-GROUND                                  ▼
-ESP32-C6 radio → ESP32-P4 receiver → USB → Android ground app
-                         ├────────────→ Ethernet multicast
-                         └────────────→ GS Linux host / display
-```
+![Rover and ground station architecture](stack.svg)
+
+[Mermaid source](stack.mmd)
 
 The rover and ground P4 boards run matching winject-l3 radio configurations. The C6 handles the radio interface over SDIO. On the rover, the P4 captures OV5647 video and encodes H.264; on the ground P4, the receiver recovers the stream and sends it to Android over USB and to the local network over RTP multicast.
 
