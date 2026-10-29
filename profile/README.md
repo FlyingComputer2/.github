@@ -7,7 +7,7 @@ We build an open, modular radio and video stack for a small UAV rover: embedded 
 ```mermaid
 flowchart LR
   subgraph R[ROVER]
-    CAM[OV5647 camera] --> TX[ESP32-P4\nH.264 + RTP/FEC]
+    CAM[OV5647 camera] --> TX[ESP32-P4 + vstreamer\nH.264 encode + RTP/FEC]
     TX --> RL3[winject-l3]
     RC[RC + telemetry] <--> RL3
     CLK[krono client] <--> RL3
@@ -27,7 +27,7 @@ flowchart LR
   end
 ```
 
-The rover and ground P4 boards run matching winject-l3 radio configurations. The C6 handles the radio interface over SDIO. On the rover, the P4 captures OV5647 video and encodes H.264; on the ground P4, the receiver recovers the stream and sends it to Android over USB and to the local network over RTP multicast.
+The rover and ground P4 boards run matching winject-l3 radio configurations. The C6 handles the radio interface over SDIO. On the rover, the P4 captures OV5647 video and the vstreamer pipeline performs H.264 encoding, RTP packetization, and application-level FEC. On the ground P4, the receiver recovers the stream and sends it to Android over USB and to the local network over RTP multicast.
 
 ## Repositories
 
@@ -52,7 +52,7 @@ The rover and ground P4 boards run matching winject-l3 radio configurations. The
 
 ## Video, control, and time
 
-- **Video:** OV5647 camera → hardware H.264 encode → RTP with application-level Reed–Solomon FEC → radio link → ground receive and fanout.
+- **Video:** OV5647 camera → vstreamer H.264 encode, RTP packetization, and application-level Reed–Solomon FEC → radio link → ground receive and fanout.
 - **Control and telemetry:** RC and rover telemetry travel on a separate radio upstream; the ground P4 bridges frames to Android USB and bench tools.
 - **Clock sync:** The ground P4 provides the reference clock. The rover synchronizes over the radio, while the Android app synchronizes over USB; the ground host follows the ground P4.
 - **Ground viewing:** Android receives video over USB. The P4 also multicasts recovered RTP H.264 to the ground network for a Linux decode/display path.
